@@ -16,7 +16,7 @@ public class Splash extends AppCompatActivity {
     /**
      * Duration of wait
      **/
-    private final int SPLASH_DISPLAY_LENGTH = 5000;
+    private final int SPLASH_DISPLAY_LENGTH = 2000;
     //Declare the Handler as a member variable
     private Handler mHandler = new Handler();
 
@@ -53,7 +53,7 @@ public class Splash extends AppCompatActivity {
             //Check that the reference is valid and execute the code
             if (mActivity.get() != null) {
                 Activity activity = (Activity) mActivity.get();
-                Intent mainIntent = new Intent(activity, MainActivity.class);
+                Intent mainIntent = new Intent(activity, LoginActivity.class);
                 activity.startActivity(mainIntent);
                 activity.finish();
             }
