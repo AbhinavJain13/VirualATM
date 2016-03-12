@@ -1,6 +1,7 @@
 package com.example.ramakant.virualatm;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +11,24 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import networking.SharedPreference;
+import networking.UserAuthentication;
+
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
     EditText _emailText;
     EditText _passwordText;
+    Context mContext;
     AppCompatButton _loginButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        mContext = this;
         _emailText = (EditText) findViewById(R.id.input_email);
         _passwordText = (EditText) findViewById(R.id.input_password);
         _loginButton = (AppCompatButton) findViewById(R.id.btn_login);
@@ -50,22 +58,40 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        final String email = _emailText.getText().toString();
+        final String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        if (true) {
-                            onLoginSuccess();
-                        } else {
-                            onLoginFailed();
+                        UserAuthentication userAuthentication = new UserAuthentication(mContext, new UserAuthentication.TokenReceived() {
+                            @Override
+                            public void sendToken(String token) {
+                                if (token.equals("")) {
+                                    progressDialog.dismiss();
+                                    onLoginFailed();
+                                } else if (token.equals("error")) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(mContext, "Please Try After Sometime", Toast.LENGTH_LONG).show();
+                                } else {
+                                    SharedPreference sharedPreference = SharedPreference.getInstance(mContext);
+                                    sharedPreference.putInSharedPreference(DataHub.AUTHENTICATION_TOKEN, token);
+                                    Toast.makeText(mContext, "token " + token, Toast.LENGTH_LONG).show();
+                                    progressDialog.dismiss();
+                                    onLoginSuccess();
+                                }
+                            }
+
+                        });
+                        String url = "http://corporate_bank.mybluemix.net/corporate_banking/mybank/authenticate_client?client_id=" + email + "&password=" + password;
+                        try {
+                            URL url1 = new URL(url);
+                            userAuthentication.userAuthentication(url1.toString());
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
                         }
-                        // onLoginFailed();
-                        progressDialog.dismiss();
                     }
                 }, 3000);
     }
