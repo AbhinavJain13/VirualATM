@@ -2,6 +2,7 @@ package com.example.ramakant.virualatm;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,9 +18,11 @@ import database.DatabaseOpenHelper;
 public class SavedCardsAdapter extends SavedCardRecyclerViewCursorAdapter<SavedCardsAdapter.MyViewHolder> {
 
     Integer rowIdCurrent;
+    boolean isTick;
 
-    public SavedCardsAdapter(SavedCardsFragment context, Cursor cursor) {
+    public SavedCardsAdapter(SavedCardsFragment context, Cursor cursor, boolean isTick) {
         super(context, cursor);
+        this.isTick = isTick;
     }
 
     @Override
@@ -36,6 +39,11 @@ public class SavedCardsAdapter extends SavedCardRecyclerViewCursorAdapter<SavedC
         viewHolder.cvv.setText(itemData.getCvv());
         viewHolder.name.setText(itemData.getName());
         viewHolder.updateCurrentId(itemData.getId());
+        if(isTick)
+        {
+
+            viewHolder.edit.setText("Select");
+        }
 
 
     }
@@ -71,12 +79,28 @@ public class SavedCardsAdapter extends SavedCardRecyclerViewCursorAdapter<SavedC
             name = (TextView) itemView.findViewById(R.id.name);
             edit = (TextView) itemView.findViewById(R.id.edit);
 
-            edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   mContext.startEditFragment(currentRowId);
-                }
-            });
+            if(isTick)
+            {
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                       mContext.startATMFragment(currentRowId);
+
+                    }
+
+                });
+            }
+            else
+            {
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mContext.startEditFragment(currentRowId);
+                    }
+                });
+            }
+
+
         }
     }
 

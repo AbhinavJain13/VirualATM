@@ -3,9 +3,11 @@ package com.example.ramakant.virualatm;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.text.method.CharacterPickerDialog;
 import android.view.LayoutInflater;
@@ -27,26 +29,48 @@ import database.DatabaseOpenHelper;
 public class ATMFragment extends Fragment {
 
     NavigationDrawer mParentActivity;
-    Button btnGeneratePin, btnSaveCard;
+    Button btnGeneratePin, btnSaveCard, btnOpenCard;
     TextView txtPinGenerated;
     EditText edtCardNumber, fromMonth, fromYear, toMonth, toYear, cvv, name;
-
+    Integer rowId = 0;
+    CardItemData data;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_atm, container, false);
+
+        Bundle bundle = getArguments();
+        rowId = bundle.getInt("rowId");
         initializeViews(rootView);
+
+        if(rowId > 0)
+        {
+           data = DatabaseOpenHelper.getInstance(getActivity()).getDataFromRowid(rowId);
+            setData(data);
+        }
 
         return rootView;
 
+    }
+
+    void setData(CardItemData itemData)
+    {
+        edtCardNumber.setText(itemData.getCardNumber());
+        toMonth.setText(itemData.getToMonth());
+        toYear.setText(itemData.getToYear());
+        fromMonth.setText(itemData.getFromMonth());
+        fromYear.setText(itemData.getFromYear());
+        cvv.setText(itemData.getCvv());
+        name.setText(itemData.getName());
     }
 
     void initializeViews(View rooView)
     {
         btnGeneratePin  = (Button) rooView.findViewById(R.id    .btnGeneratePin);
         txtPinGenerated = (TextView) rooView.findViewById(R.id.txtPinGenerated);
+        btnOpenCard = (Button) rooView.findViewById(R.id.btnOpenCard);
         btnSaveCard = (Button) rooView.findViewById(R.id.btnSaveCard);
         edtCardNumber = (EditText) rooView.findViewById(R.id.edtCardNumber);
         fromMonth = (EditText) rooView.findViewById(R.id.fromMonth);
@@ -75,8 +99,8 @@ public class ATMFragment extends Fragment {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        DatabaseOpenHelper.getInstance(getActivity()).insertCardData(edtCardNumber.getText().toString(),fromMonth.getText().toString(),fromYear.getText().toString()
-                        ,toMonth.getText().toString(), toYear.getText().toString(),cvv.getText().toString(),name.getText().toString());
+                        DatabaseOpenHelper.getInstance(getActivity()).insertCardData(edtCardNumber.getText().toString(), fromMonth.getText().toString(), fromYear.getText().toString()
+                                , toMonth.getText().toString(), toYear.getText().toString(), cvv.getText().toString(), name.getText().toString());
                     }
                 });
 
@@ -88,6 +112,20 @@ public class ATMFragment extends Fragment {
                 });
 
                 builder.show();
+            }
+        });
+
+        btnOpenCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SavedCardsFragment fragmentSavedCards = new SavedCardsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isTick", true);
+                fragmentSavedCards.setArguments(bundle);
+                FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
+                fragmentManager1.beginTransaction()
+                        .replace(R.id.container, fragmentSavedCards)
+                        .commit();
             }
         });
     }

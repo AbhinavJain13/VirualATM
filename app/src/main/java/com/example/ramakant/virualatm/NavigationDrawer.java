@@ -54,6 +54,9 @@ public class NavigationDrawer extends AppCompatActivity
             case 0:
 
                 ATMFragment fragment = new ATMFragment();
+                Bundle bundle1 = new Bundle();
+                bundle1.putInt("rowId",0);
+                fragment.setArguments(bundle1);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
@@ -63,6 +66,9 @@ public class NavigationDrawer extends AppCompatActivity
 
             case 2:
                SavedCardsFragment fragmentSavedCards = new SavedCardsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isTick", false);
+                fragmentSavedCards.setArguments(bundle);
                 FragmentManager fragmentManager1 = getSupportFragmentManager();
                 fragmentManager1.beginTransaction()
                         .replace(R.id.container, fragmentSavedCards)

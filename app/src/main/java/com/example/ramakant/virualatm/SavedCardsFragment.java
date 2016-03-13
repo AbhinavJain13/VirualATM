@@ -19,6 +19,7 @@ import database.DatabaseOpenHelper;
 public class SavedCardsFragment extends Fragment {
 
     RecyclerView recyclerView;
+    boolean isTick = false;
 
     @Nullable
     @Override
@@ -30,6 +31,10 @@ public class SavedCardsFragment extends Fragment {
 
     public void initializeView(View rootView)
     {
+
+        Bundle bundle = getArguments();
+        isTick = bundle.getBoolean("isTick");
+
         recyclerView = (RecyclerView) rootView.findViewById(R.id.cardList);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -38,7 +43,7 @@ public class SavedCardsFragment extends Fragment {
 
         Cursor cursor = DatabaseOpenHelper.getInstance(getActivity()).getCardData();
 
-        SavedCardsAdapter adapter = new SavedCardsAdapter(SavedCardsFragment.this,cursor);
+        SavedCardsAdapter adapter = new SavedCardsAdapter(SavedCardsFragment.this,cursor, isTick);
         recyclerView.setAdapter(adapter);
     }
 
@@ -47,12 +52,27 @@ public class SavedCardsFragment extends Fragment {
 
         EditFragment editFragment = new EditFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("rowId",rowId);
+        bundle.putInt("rowId", rowId);
         editFragment.setArguments(bundle);
 
         FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
         fragmentManager1.beginTransaction()
                 .replace(R.id.container, editFragment)
+                .commit();
+
+    }
+
+    public void startATMFragment(Integer rowId)
+    {
+
+        ATMFragment atmFragment = new ATMFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("rowId",rowId);
+        atmFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
+        fragmentManager1.beginTransaction()
+                .replace(R.id.container, atmFragment)
                 .commit();
 
     }
