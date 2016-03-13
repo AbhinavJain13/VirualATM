@@ -46,7 +46,7 @@ public class NavigationDrawer extends AppCompatActivity
         // update the main content by replacing fragments
        /* FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, PlaceholderFragment.newInstance(posit]on + 1))
                 .commit();*/
 
         switch (position)
@@ -58,6 +58,17 @@ public class NavigationDrawer extends AppCompatActivity
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
                         .commit();
+
+                break;
+
+            case 2:
+               SavedCardsFragment fragmentSavedCards = new SavedCardsFragment();
+                FragmentManager fragmentManager1 = getSupportFragmentManager();
+                fragmentManager1.beginTransaction()
+                        .replace(R.id.container, fragmentSavedCards)
+                        .commit();
+                break;
+
         }
     }
 
