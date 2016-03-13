@@ -31,7 +31,7 @@ public class SharedPreference {
     }
 
     public String getFromSharedPreference(String key) {
-        return sharedPref.getString(DataHub.AUTHENTICATION_TOKEN, "");
+        return sharedPref.getString(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
     }
 
     private SharedPreferences.Editor getEditor() {

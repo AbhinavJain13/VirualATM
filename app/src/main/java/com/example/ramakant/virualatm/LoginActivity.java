@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText _passwordText;
     Context mContext;
     AppCompatButton _loginButton;
+    SharedPreference sharedPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         _passwordText = (EditText) findViewById(R.id.input_password);
         _loginButton = (AppCompatButton) findViewById(R.id.btn_login);
 
+        checkForSharedPreferenceLogin();  //Each Token is Valid For 60 days so we can skip the Authentication API
+
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -41,6 +44,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * Login Directly using shared preference token
+     */
+    private void checkForSharedPreferenceLogin() {
+        sharedPreference = SharedPreference.getInstance(mContext);
+        String token = sharedPreference.getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN);
+        if (token.equals("invalid_value")) {
+            //login();
+            Toast.makeText(this, "Please Login", Toast.LENGTH_LONG).show();
+        } else {
+            onLoginSuccess();
+        }
     }
 
     public void login() {
@@ -76,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     Toast.makeText(mContext, "Please Try After Sometime", Toast.LENGTH_LONG).show();
                                 } else {
-                                    SharedPreference sharedPreference = SharedPreference.getInstance(mContext);
+                                    sharedPreference = SharedPreference.getInstance(mContext);
                                     sharedPreference.putInSharedPreference(DataHub.AUTHENTICATION_TOKEN, token);
                                     Toast.makeText(mContext, "token " + token, Toast.LENGTH_LONG).show();
                                     progressDialog.dismiss();
@@ -85,7 +102,8 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         });
-                        String url = "http://corporate_bank.mybluemix.net/corporate_banking/mybank/authenticate_client?client_id=" + email + "&password=" + password;
+                        //String url = "http://corporate_bank.mybluemix.net/corporate_banking/mybank/authenticate_client?client_id=" + email + "&password=" + password;
+                        String url = DataHub.AUTHENTICATION_URL + DataHub.QUESTION_MARK_OPERATOR + DataHub.CLIENT_ID + DataHub.EQUAL_OPERATOR + email + DataHub.AND_OPERATOR + DataHub.PASSWORD + DataHub.EQUAL_OPERATOR + password;
                         try {
                             URL url1 = new URL(url);
                             userAuthentication.userAuthentication(url1.toString());
