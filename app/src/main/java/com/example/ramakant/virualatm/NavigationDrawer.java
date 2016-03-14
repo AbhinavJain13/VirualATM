@@ -75,6 +75,31 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
                 break;
 
+            case 3:
+                AccountSummaryFragment fragmentAccountSummary = new AccountSummaryFragment();
+                FragmentManager fragmentManager2 = getSupportFragmentManager();
+                fragmentManager2.beginTransaction()
+                        .replace(R.id.container, fragmentAccountSummary)
+                        .commit();
+                break;
+
+            case 4:
+                BalanceInfo balanceInfoFragment = new BalanceInfo();
+                FragmentManager fragmentManager4 = getSupportFragmentManager();
+                fragmentManager4.beginTransaction()
+                        .replace(R.id.container, balanceInfoFragment)
+                        .commit();
+                break;
+
+            case 5:
+                NeedHelpFragment needHelpFragment = new NeedHelpFragment();
+                FragmentManager fragmentManager3 = getSupportFragmentManager();
+                fragmentManager3.beginTransaction()
+                        .replace(R.id.container, needHelpFragment)
+                        .commit();
+
+                break;
+
         }
     }
 
