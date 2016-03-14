@@ -22,17 +22,29 @@
             android:background="#EEE5DE"
             >
 
-            <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/edit_text_shape"
+                android:layout_marginTop="20dp"
+                android:text="Edit"
+                android:padding="3dp"
+                android:id="@+id/edit"
+                android:layout_gravity="end"
+                />
+
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/edit_text_shape"
                 android:layout_marginTop="20dp"
-                android:hint="Card Number"
+                android:text="Card Number"
                 android:padding="3dp"
                 android:id="@+id/edtCardNumber"
-                android:inputType="number"
                 />
 
             <LinearLayout
@@ -43,69 +55,58 @@
                 android:layout_marginTop="20dp"
                 >
 
-                <EditText
+                <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
-                    android:hint="V"
                     android:padding="3dp"
                     android:id="@+id/fromMonth"
-                    android:inputType="number"
                     />
-                <EditText
+                <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
-                    android:hint="F"
                     android:padding="3dp"
                     android:id="@+id/fromYear"
-                    android:inputType="number"
                     />
 
-                <EditText
+                <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
                     android:layout_marginLeft="15dp"
-                    android:hint="V"
                     android:padding="3dp"
                     android:id="@+id/toMonth"
-                    android:inputType="number"
                     />
 
-                <EditText
+                <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
-                    android:hint="T"
                     android:padding="3dp"
                     android:id="@+id/toYear"
-                    android:inputType="number"
                     />
 
-                <EditText
+                <TextView
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
                     android:layout_marginLeft="15dp"
-                    android:hint="Cvv"
                     android:padding="3dp"
                     android:id="@+id/cvv"
-                    android:inputType="number"
                     />
 
 
 
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/edit_text_shape"
                 android:layout_marginTop="20dp"
-                android:hint="Name"
                 android:layout_marginBottom="20dp"
                 android:padding="3dp"
                 android:id="@+id/name"
@@ -114,47 +115,6 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Generate Pin"
-            android:id="@+id/btnGeneratePin"
-            android:background="@drawable/button_round"
-            android:padding="3dp"
-            android:layout_alignParentRight="true"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_round"
-            android:padding="3dp"
-            android:text="Open Saved Card"
-            android:id="@+id/btnOpenCard"
-            android:layout_centerHorizontal="true"
-            />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_round"
-            android:padding="3dp"
-            android:text="Save Card"
-            android:id="@+id/btnSaveCard"
-            />
-
-    </RelativeLayout>
-
-
 
 
     <TextView
