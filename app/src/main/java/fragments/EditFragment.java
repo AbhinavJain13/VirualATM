@@ -1,4 +1,4 @@
-package com.example.ramakant.virualatm;
+package fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import Utils.CardItemData;
+import com.example.ramakant.virualatm.R;
 
 import database.DatabaseOpenHelper;
 
@@ -64,6 +67,9 @@ public class EditFragment extends Fragment {
                         , toMonth.getText().toString(), toYear.getText().toString(), cvv.getText().toString(), name.getText().toString());
 
                 SavedCardsFragment savedCardsFragment = new SavedCardsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isTick", false);
+                savedCardsFragment.setArguments(bundle);
                 FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
                 fragmentManager1.beginTransaction()
                         .replace(R.id.container, savedCardsFragment)

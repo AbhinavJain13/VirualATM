@@ -1,4 +1,4 @@
-package com.example.ramakant.virualatm;
+package Utils;
 
 import android.database.Cursor;
 

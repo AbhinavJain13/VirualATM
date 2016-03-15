@@ -13,6 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import fragments.ATMFragment;
+import fragments.AccountSummaryFragment;
+import fragments.BalanceInfo;
+import fragments.Mini_Statement_Fragment;
+import fragments.NavigationDrawerFragment;
+import fragments.NeedHelpFragment;
+import fragments.SavedCardsFragment;
+
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -60,6 +68,15 @@ public class NavigationDrawer extends AppCompatActivity
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
+                        .commit();
+
+                break;
+
+            case 1:
+                Mini_Statement_Fragment fragmentMiniStat = new Mini_Statement_Fragment();
+                FragmentManager fragmentManager6 = getSupportFragmentManager();
+                fragmentManager6.beginTransaction()
+                        .replace(R.id.container, fragmentMiniStat)
                         .commit();
 
                 break;

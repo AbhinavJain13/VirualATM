@@ -3,7 +3,7 @@ package networking;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.ramakant.virualatm.DataHub;
+import Utils.DataHub;
 
 /**
  * Created by Ramakant on 3/12/2016.

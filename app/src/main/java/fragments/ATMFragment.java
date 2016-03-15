@@ -1,15 +1,13 @@
-package com.example.ramakant.virualatm;
+package fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
-import android.text.method.CharacterPickerDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import Utils.CardItemData;
+import com.example.ramakant.virualatm.NavigationDrawer;
+import com.example.ramakant.virualatm.R;
 
 import database.DatabaseOpenHelper;
 

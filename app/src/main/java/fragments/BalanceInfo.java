@@ -1,4 +1,4 @@
-package com.example.ramakant.virualatm;
+package fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.ramakant.virualatm.R;
 
 /**
  * Created by User on 14/03/2016.

@@ -1,8 +1,6 @@
-package com.example.ramakant.virualatm;
+package adapters;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ramakant.virualatm.R;
+
+import Utils.CardItemData;
 import database.DatabaseOpenHelper;
+import fragments.SavedCardsFragment;
 
 /**
  * Created by admin on 3/13/2016.

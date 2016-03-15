@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.ramakant.virualatm.CardItemData;
+import Utils.CardItemData;
 
 /**
  * Created by admin on 3/13/2016.

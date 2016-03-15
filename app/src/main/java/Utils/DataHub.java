@@ -1,4 +1,4 @@
-package com.example.ramakant.virualatm;
+package Utils;
 
 /**
  * Created by Ramakant on 3/12/2016.

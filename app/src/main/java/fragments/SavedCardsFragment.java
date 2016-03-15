@@ -1,4 +1,4 @@
-package com.example.ramakant.virualatm;
+package fragments;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.ramakant.virualatm.R;
+import adapters.SavedCardsAdapter;
 
 import database.DatabaseOpenHelper;
 
