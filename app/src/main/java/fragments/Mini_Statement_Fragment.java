@@ -1,5 +1,6 @@
 package fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,13 +9,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import adapters.AdapterMiniStatement;
-import Utils.MiniStatementData;
 import com.example.ramakant.virualatm.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Utils.DataHub;
+import Utils.MiniStatementData;
+import adapters.AdapterMiniStatement;
+import networking.MiniStatement;
+import networking.SharedPreference;
 
 /**
  * Created by User on 15/03/2016.
@@ -23,6 +29,7 @@ public class Mini_Statement_Fragment extends Fragment {
 
     RecyclerView recyclerView;
     List<MiniStatementData> data = new ArrayList<>();
+    private ProgressDialog progressDialog;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +50,38 @@ public class Mini_Statement_Fragment extends Fragment {
 
     void initializeData()
     {
-        MiniStatementData miniData = new MiniStatementData();
+        showProgressDialog();
+        String token = SharedPreference.getInstance(getActivity()).getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN);
+        new MiniStatement(getActivity(), token, DataHub.USER_ID, DataHub.ACCOUNT_NO_CUST_ID_1, new MiniStatement.MiniStatementInfo() {
+            @Override
+            public void miniStatementInfo(String transactionDate, String closingBalance, String accountNumber, String creditDebitFlag, String transactionAmount, String remark) {
+                MiniStatementData miniData = new MiniStatementData();
+                miniData.setAccnnum(accountNumber);
+                miniData.setBalance(closingBalance);
+                miniData.setDate(transactionDate);
+                miniData.setFlag(creditDebitFlag);
+                miniData.setTransacnamnt(transactionAmount);
+                miniData.setNotes(remark);
+
+                data.add(miniData);
+
+                AdapterMiniStatement adapter = new AdapterMiniStatement(getActivity(), data);
+                recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void unauthorizedUser(int code, String msg, String desc) {
+                dismissProgressDialog();
+                Toast.makeText(getActivity(), msg + ": " + desc, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void volleyError(String error) {
+                dismissProgressDialog();
+            }
+        });
+/*        MiniStatementData miniData = new MiniStatementData();
         miniData.setAccnnum("875394");
         miniData.setBalance("78687687");
         miniData.setDate("12 April 2015");
@@ -64,6 +102,18 @@ public class Mini_Statement_Fragment extends Fragment {
         data.add(miniData1);
 
         AdapterMiniStatement adapter = new AdapterMiniStatement(getActivity(), data);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
+    }
+
+    private void dismissProgressDialog() {
+        progressDialog.dismiss();
+    }
+
+    private void showProgressDialog() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+
     }
 }

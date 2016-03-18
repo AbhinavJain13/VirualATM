@@ -2,227 +2,213 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <android.support.v7.widget.CardView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        >
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
             android:background="#EEE5DE"
-            >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:text="Account Number"
-        android:textColor="@color/black"
-        android:layout_marginLeft="5dp"
-        />
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="687534539"
-        android:layout_marginLeft="5dp"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="3dp"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Account Number"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/txtAccountNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:text="687534539"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Balance"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="560000 Rs."
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
+                android:text="560000 Rs."
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Account"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Regular Savings Account"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
+                android:text="Regular Savings Account"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Account Type"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtAccountType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Savings Account"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
+                android:text="Savings Account"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Customer Id"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtCustomerId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="324567"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
+                android:text="324567"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Account Status"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtAccountStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Active"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
+                android:text="Active"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Mobile Number"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtMobileNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9876543456"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
+                android:text="9876543456"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Category"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txtCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Liabilities"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:layout_marginTop="3dp"
-                />
-
+                android:text="Liabilities"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
 
         </LinearLayout>

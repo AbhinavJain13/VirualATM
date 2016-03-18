@@ -12,14 +12,14 @@ import com.example.ramakant.virualatm.R;
 /**
  * Created by User on 14/03/2016.
  */
-public class BalanceInfo extends Fragment{
+public class BalanceInfo extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-View rootView = inflater.inflate(R.layout.balance_info,container,false);
+        View rootView = inflater.inflate(R.layout.balance_info, container, false);
 
-        return  rootView;
+        return rootView;
 
     }
 }

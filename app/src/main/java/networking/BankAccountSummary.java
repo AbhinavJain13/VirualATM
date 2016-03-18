@@ -2,13 +2,11 @@ package networking;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import Utils.DataHub;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +14,8 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import Utils.DataHub;
 
 /**
  * Created by Ramakant on 3/13/2016.
@@ -40,7 +40,7 @@ public class BankAccountSummary {
 
         String finalUrl = DataHub.BANK_ACCOUNT_SUMMARY_URL +
                 DataHub.QUESTION_MARK_OPERATOR +
-                DataHub.CLIENT_ID + DataHub.EQUAL_OPERATOR + DataHub.USER_ID +
+                DataHub.CLIENT_ID + DataHub.EQUAL_OPERATOR + clientId +
                 DataHub.AND_OPERATOR +
                 DataHub.AUTHENTICATION_TOKEN + DataHub.EQUAL_OPERATOR + token +
                 DataHub.AND_OPERATOR +
@@ -73,9 +73,9 @@ public class BankAccountSummary {
                     } else if (responseCode == 401) {
                         String msg = jsonObject.getString("message");
                         String description = jsonObject.getString("description");
-                        Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
                         //call back to balance information fragment
-                        bankAccountDetails.unauthorizedUser(responseCode, msg);
+                        bankAccountDetails.unauthorizedUser(responseCode, msg, description);
                     }
 
                 } catch (JSONException e) {
@@ -93,11 +93,11 @@ public class BankAccountSummary {
         VolleyApplication.getInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    interface BankAccountDetails {
+    public interface BankAccountDetails {
         void accountDetails(String balance, String accountNumber, String accountType, String product_desc, String productType, String subProductType,
                             String custId, String accountStatus, String mobileNo, String productCategory);
 
-        void unauthorizedUser(int code, String msg);
+        void unauthorizedUser(int code, String s, String msg);
 
         void volleyError(String error);
     }

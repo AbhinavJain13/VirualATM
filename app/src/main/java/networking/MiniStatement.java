@@ -2,13 +2,11 @@ package networking;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import Utils.DataHub;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +14,8 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import Utils.DataHub;
 
 /**
  * Created by Ramakant on 3/13/2016.
@@ -38,7 +38,7 @@ public class MiniStatement {
 
         String finalUrl = DataHub.MINI_STATEMENT_URL +
                 DataHub.QUESTION_MARK_OPERATOR +
-                DataHub.CLIENT_ID + DataHub.EQUAL_OPERATOR + DataHub.USER_ID +
+                DataHub.CLIENT_ID + DataHub.EQUAL_OPERATOR + clientId +
                 DataHub.AND_OPERATOR +
                 DataHub.AUTHENTICATION_TOKEN + DataHub.EQUAL_OPERATOR + token +
                 DataHub.AND_OPERATOR +
@@ -69,9 +69,14 @@ public class MiniStatement {
                     } else if (responseCode == 401) {
                         String msg = jsonObject.getString("message");
                         String description = jsonObject.getString("description");
-                        Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
                         //call back to balance information fragment
-                        miniStatementInfo.unauthorizedUser(responseCode, msg);
+                        miniStatementInfo.unauthorizedUser(responseCode, msg, description);
+                    } else {
+                        String msg = jsonObject.getString("message");
+                        String description = jsonObject.getString("description");
+                        //Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
+                        miniStatementInfo.unauthorizedUser(503, msg, description);
                     }
 
                 } catch (JSONException e) {
@@ -89,10 +94,10 @@ public class MiniStatement {
         VolleyApplication.getInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    interface MiniStatementInfo {
+    public interface MiniStatementInfo {
         void miniStatementInfo(String transactionDate, String closingBalance, String accountNumber, String creditDebitFlag, String transactionAmount, String remark);
 
-        void unauthorizedUser(int code, String msg);
+        void unauthorizedUser(int code, String msg, String desc);
 
         void volleyError(String error);
     }
