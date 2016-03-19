@@ -17,11 +17,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import Utils.CardItemData;
 import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
 
+import Utils.CardItemData;
 import database.DatabaseOpenHelper;
+import networking.SharedPreference;
 
 /**
  * Created by admin on 3/12/2016.
@@ -33,7 +34,7 @@ public class ATMFragment extends Fragment {
     NavigationDrawer mParentActivity;
     Button btnGeneratePin, btnSaveCard, btnOpenCard;
     TextView txtPinGenerated;
-    EditText edtCardNumber, fromMonth, fromYear, toMonth, toYear, cvv, name;
+    EditText edtCardNumber, fromMonth, fromYear, toMonth, toYear, cvv, name, amount;
     Integer rowId = 0;
     CardItemData data;
 
@@ -81,6 +82,7 @@ public class ATMFragment extends Fragment {
         toYear = (EditText) rooView.findViewById(R.id.toYear);
         cvv = (EditText) rooView.findViewById(R.id.cvv);
         name = (EditText) rooView.findViewById(R.id.name);
+        amount = (EditText) rooView.findViewById(R.id.amount);
 
         btnGeneratePin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,8 +144,10 @@ public class ATMFragment extends Fragment {
 
     public void pinGenerated()
     {
+        String amount1 = amount.getText().toString();
+        SharedPreference.getInstance(getActivity()).putInSharedPreference("AMOUNT", amount1);
         txtPinGenerated.setVisibility(View.VISIBLE);
-        txtPinGenerated.setText("Pin Generated : 5437909890 ");
+        txtPinGenerated.setText("Your Pin is 7045788997,your account will be debited by " + amount1);
     }
 
     @Override

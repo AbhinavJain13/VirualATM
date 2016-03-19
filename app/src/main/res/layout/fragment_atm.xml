@@ -10,88 +10,88 @@
     <android.support.v7.widget.CardView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="30dp"
         >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
             android:background="#EEE5DE"
+            android:orientation="vertical"
             >
 
             <EditText
+                android:id="@+id/edtCardNumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/edit_text_shape"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_shape"
                 android:hint="Card Number"
-                android:padding="3dp"
-                android:id="@+id/edtCardNumber"
                 android:inputType="number"
+                android:padding="3dp"
                 />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
+                android:orientation="horizontal"
                 >
 
                 <EditText
+                    android:id="@+id/fromMonth"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
                     android:hint="V"
-                    android:padding="3dp"
-                    android:id="@+id/fromMonth"
                     android:inputType="number"
+                    android:padding="3dp"
                     />
                 <EditText
+                    android:id="@+id/fromYear"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
                     android:hint="F"
-                    android:padding="3dp"
-                    android:id="@+id/fromYear"
                     android:inputType="number"
+                    android:padding="3dp"
                     />
 
                 <EditText
+                    android:id="@+id/toMonth"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_shape"
                     android:layout_marginLeft="15dp"
+                    android:background="@drawable/edit_text_shape"
                     android:hint="V"
-                    android:padding="3dp"
-                    android:id="@+id/toMonth"
                     android:inputType="number"
+                    android:padding="3dp"
                     />
 
                 <EditText
+                    android:id="@+id/toYear"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
                     android:hint="T"
-                    android:padding="3dp"
-                    android:id="@+id/toYear"
                     android:inputType="number"
+                    android:padding="3dp"
                     />
 
                 <EditText
+                    android:id="@+id/cvv"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_shape"
                     android:layout_marginLeft="15dp"
+                    android:background="@drawable/edit_text_shape"
                     android:hint="Cvv"
-                    android:padding="3dp"
-                    android:id="@+id/cvv"
                     android:inputType="number"
+                    android:padding="3dp"
                     />
 
 
@@ -99,16 +99,28 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/name"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/edit_text_shape"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_shape"
                 android:hint="Name"
+                android:padding="3dp" />
+
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_text_shape"
+                android:hint="Enter Amount"
                 android:padding="3dp"
-                android:id="@+id/name"
                 />
 
         </LinearLayout>
@@ -118,53 +130,51 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         >
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Generate Pin"
             android:id="@+id/btnGeneratePin"
-            android:background="@drawable/button_round"
-            android:padding="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:background="@drawable/button_round"
             android:padding="3dp"
-            android:text="Open Saved Card"
-            android:id="@+id/btnOpenCard"
-            android:layout_centerHorizontal="true"
+            android:text="Generate Pin"
             />
+        <Button
+            android:id="@+id/btnOpenCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/button_round"
+            android:padding="3dp"
+            android:text="Open Saved Card" />
 
 
         <Button
+            android:id="@+id/btnSaveCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:background="@drawable/button_round"
             android:padding="3dp"
             android:text="Save Card"
-            android:id="@+id/btnSaveCard"
             />
 
     </RelativeLayout>
 
 
-
-
     <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:id="@+id/txtPinGenerated"
-        android:visibility="gone"
-        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:textSize="20dp"
+        android:visibility="gone"
         />
 
 </LinearLayout>

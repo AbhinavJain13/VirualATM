@@ -20,19 +20,19 @@ import fragments.Mini_Statement_Fragment;
 import fragments.NavigationDrawerFragment;
 import fragments.NeedHelpFragment;
 import fragments.SavedCardsFragment;
+import fragments.VirtualATM;
 
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     public CharSequence mTitle;
+    /**
+     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     */
+    private NavigationDrawerFragment mNavigationDrawerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +116,13 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
 
                 break;
+            case 8:
+                VirtualATM virtualATM = new VirtualATM();
+                FragmentManager fragmentManager8 = getSupportFragmentManager();
+                fragmentManager8.beginTransaction()
+                        .replace(R.id.container, virtualATM)
+                        .commit();
+                break;
 
         }
     }
@@ -123,7 +130,7 @@ public class NavigationDrawer extends AppCompatActivity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_atm);
+                mTitle = getString(R.string.generate_pin);
                 break;
             case 2:
                 mTitle = getString(R.string.title_mini_statement);
@@ -145,6 +152,9 @@ public class NavigationDrawer extends AppCompatActivity
                 break;
             case 8:
                 mTitle = getString(R.string.title_logout);
+                break;
+            case 9:
+                mTitle = getString(R.string.title_atm);
                 break;
         }
     }

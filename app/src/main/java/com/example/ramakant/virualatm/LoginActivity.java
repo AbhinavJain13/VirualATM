@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void checkForSharedPreferenceLogin() {
         sharedPreference = SharedPreference.getInstance(mContext);
-        String token = sharedPreference.getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN);
+        String token = sharedPreference.getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
         if (token.equals("invalid_value")) {
             //login();
             Toast.makeText(this, "Please Login", Toast.LENGTH_LONG).show();
@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }*/
 
-        _loginButton.setEnabled(false);
+        //_loginButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setIndeterminate(true);

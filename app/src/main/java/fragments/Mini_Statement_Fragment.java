@@ -51,7 +51,7 @@ public class Mini_Statement_Fragment extends Fragment {
     void initializeData()
     {
         showProgressDialog();
-        String token = SharedPreference.getInstance(getActivity()).getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN);
+        String token = SharedPreference.getInstance(getActivity()).getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
         new MiniStatement(getActivity(), token, DataHub.USER_ID, DataHub.ACCOUNT_NO_CUST_ID_1, new MiniStatement.MiniStatementInfo() {
             @Override
             public void miniStatementInfo(String transactionDate, String closingBalance, String accountNumber, String creditDebitFlag, String transactionAmount, String remark) {
@@ -79,6 +79,7 @@ public class Mini_Statement_Fragment extends Fragment {
             @Override
             public void volleyError(String error) {
                 dismissProgressDialog();
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 /*        MiniStatementData miniData = new MiniStatementData();
