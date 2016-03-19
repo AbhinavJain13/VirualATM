@@ -1,5 +1,6 @@
 package fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class Mini_Statement_Fragment extends Fragment {
     RecyclerView recyclerView;
     List<MiniStatementData> data = new ArrayList<>();
     private ProgressDialog progressDialog;
+    NavigationDrawer activity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +51,13 @@ public class Mini_Statement_Fragment extends Fragment {
         recyclerView.setLayoutManager(llm);
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (NavigationDrawer)activity;
+        this.activity.mTitle = "Mini Statement";
+        this.activity.restoreActionBar();
+    }
     void initializeData()
     {
         showProgressDialog();

@@ -1,5 +1,6 @@
 package fragments;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
 import adapters.SavedCardsAdapter;
 
@@ -23,6 +25,7 @@ public class SavedCardsFragment extends Fragment {
 
     RecyclerView recyclerView;
     boolean isTick = false;
+    NavigationDrawer activity;
 
     @Nullable
     @Override
@@ -30,6 +33,14 @@ public class SavedCardsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_saved_cards,container,false);
          initializeView(rootView);
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (NavigationDrawer)activity;
+        this.activity.mTitle = "Saved Cards";
+        this.activity.restoreActionBar();
     }
 
     public void initializeView(View rootView)

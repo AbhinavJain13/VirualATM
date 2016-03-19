@@ -1,5 +1,6 @@
 package fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
 
 import Utils.DataHub;
@@ -31,6 +33,7 @@ public class AccountSummaryFragment extends Fragment {
     private TextView mCategory;
     private View rootView;
     private ProgressDialog progressDialog;
+    NavigationDrawer activity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +53,14 @@ public class AccountSummaryFragment extends Fragment {
         mMobile = (TextView) rootView.findViewById(R.id.txtMobileNumber);
         mCategory = (TextView) rootView.findViewById(R.id.txtCategory);
 
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (NavigationDrawer)activity;
+        this.activity.mTitle = "Account Summary";
+        this.activity.restoreActionBar();
     }
 
     private void accountSummary() {

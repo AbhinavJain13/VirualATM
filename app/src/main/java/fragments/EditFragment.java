@@ -1,5 +1,6 @@
 package fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import Utils.CardItemData;
+
+import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
 
 import database.DatabaseOpenHelper;
@@ -24,6 +27,7 @@ public class EditFragment extends Fragment {
     Integer rowId;
 
     Button btnSaveCard, btnGeneratePin;
+    NavigationDrawer activity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +39,14 @@ public class EditFragment extends Fragment {
        initializeView(rootView);
 
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (NavigationDrawer)activity;
+        this.activity.mTitle = "Edit Details";
+        this.activity.restoreActionBar();
     }
 
     public void initializeView(View rooView)
@@ -76,6 +88,7 @@ public class EditFragment extends Fragment {
                         .commit();
             }
         });
+
 
 
     }
