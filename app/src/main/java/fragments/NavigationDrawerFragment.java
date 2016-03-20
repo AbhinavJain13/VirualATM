@@ -109,7 +109,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_account_summary),
                         getString(R.string.title_balance_info),
                         getString(R.string.title_need_help),
-                        getString(R.string.title_refer_to_friend),
+                        getString(R.string.title_share_via),
                         getString(R.string.title_logout),
                         getString(R.string.title_atm)
                 }));

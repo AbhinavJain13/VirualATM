@@ -18,6 +18,7 @@
     <string name="title_balance_info">BALANCE INFO</string>
     <string name="title_need_help">NEED HELP</string>
     <string name="title_refer_to_friend">REFER A FRIEND</string>
+    <string name="title_share_via">SHARE VIA</string>
     <string name="title_logout">LOGOUT</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

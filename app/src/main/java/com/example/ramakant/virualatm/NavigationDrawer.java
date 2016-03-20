@@ -1,6 +1,8 @@
 package com.example.ramakant.virualatm;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import Utils.DataHub;
 import fragments.ATMFragment;
 import fragments.AccountSummaryFragment;
 import fragments.BalanceInfo;
@@ -23,6 +27,7 @@ import fragments.NavigationDrawerFragment;
 import fragments.NeedHelpFragment;
 import fragments.SavedCardsFragment;
 import fragments.VirtualATM;
+import networking.SharedPreference;
 
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -35,6 +40,7 @@ public class NavigationDrawer extends AppCompatActivity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +124,35 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
 
                 break;
+            case 6:
+                Intent i=new Intent(android.content.Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(android.content.Intent.EXTRA_SUBJECT,"Virtual ATM");
+                i.putExtra(android.content.Intent.EXTRA_TEXT,"Virtual ATM");
+                startActivity(Intent.createChooser(i,"Share via"));
+                break;
+
+            case 7:
+                new AlertDialog.Builder(this)
+                        //.setTitle("Delete entry")
+                        .setMessage("Do you really want to Log Out from Virtual ATM ?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                SharedPreference.getInstance(getApplicationContext()).putInSharedPreference(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
+                                Intent intent = new Intent(NavigationDrawer.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                break;
+
             case 8:
                 VirtualATM virtualATM = new VirtualATM();
                 FragmentManager fragmentManager8 = getSupportFragmentManager();
@@ -150,7 +185,7 @@ public class NavigationDrawer extends AppCompatActivity
                 mTitle = getString(R.string.title_need_help);
                 break;
             case 7:
-                mTitle = getString(R.string.title_refer_to_friend);
+                mTitle = getString(R.string.title_share_via);
                 break;
             case 8:
                 mTitle = getString(R.string.title_logout);

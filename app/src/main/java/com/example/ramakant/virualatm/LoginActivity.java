@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
         _loginButton.setEnabled(true);
         Intent intent = new Intent(this, NavigationDrawer.class);
         startActivity(intent);
-        //finish();
+        finish();
     }
 
     public void onLoginFailed() {
