@@ -147,7 +147,7 @@ public class ATMFragment extends Fragment {
         String amount1 = amount.getText().toString();
         SharedPreference.getInstance(getActivity()).putInSharedPreference("AMOUNT", amount1);
         txtPinGenerated.setVisibility(View.VISIBLE);
-        txtPinGenerated.setText("Your Pin is 7045788997,your account will be debited by " + amount1);
+        txtPinGenerated.setText("Your Pin is 7045788997,your account will be debited by " + amount1 +"Rs");
     }
 
     @Override
