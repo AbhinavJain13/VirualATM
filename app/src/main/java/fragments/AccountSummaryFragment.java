@@ -23,6 +23,7 @@ import networking.SharedPreference;
  */
 public class AccountSummaryFragment extends Fragment {
 
+    NavigationDrawer activity;
     private TextView mAccountNumber;
     private TextView mBalance;
     private TextView mAccount;
@@ -33,7 +34,7 @@ public class AccountSummaryFragment extends Fragment {
     private TextView mCategory;
     private View rootView;
     private ProgressDialog progressDialog;
-    NavigationDrawer activity;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,8 +46,8 @@ public class AccountSummaryFragment extends Fragment {
 
     private void initViewIds() {
         mAccountNumber = (TextView) rootView.findViewById(R.id.txtAccountNum);
-        mBalance = (TextView) rootView.findViewById(R.id.txtBalance);
-        mAccount = (TextView) rootView.findViewById(R.id.txtBalance);
+        mBalance = (TextView) rootView.findViewById(R.id.txtbalance);
+        mAccount = (TextView) rootView.findViewById(R.id.txtAccount);
         mAccountType = (TextView) rootView.findViewById(R.id.txtAccountType);
         mCustId = (TextView) rootView.findViewById(R.id.txtCustomerId);
         mAccountStatus = (TextView) rootView.findViewById(R.id.txtAccountStatus);

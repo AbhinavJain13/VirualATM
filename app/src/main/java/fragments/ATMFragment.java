@@ -139,7 +139,7 @@ public class ATMFragment extends Fragment {
         super.onAttach(context);
 
         mParentActivity = (NavigationDrawer) context;
-        mParentActivity.mTitle =  "ATM";
+        mParentActivity.mTitle = "GENERATE PIN";
     }
 
     public void pinGenerated()

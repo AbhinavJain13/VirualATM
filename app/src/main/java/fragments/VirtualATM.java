@@ -1,5 +1,6 @@
 package fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
 
 import Utils.DataHub;
@@ -20,6 +22,7 @@ import networking.SharedPreference;
  */
 public class VirtualATM extends android.support.v4.app.Fragment {
 
+    NavigationDrawer activity;
     private View rootView;
     private EditText edtPin;
     private Button btnYes;
@@ -32,6 +35,13 @@ public class VirtualATM extends android.support.v4.app.Fragment {
         rootView = inflater.inflate(R.layout.virtualatm, container, false);
         initViewIds();
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (NavigationDrawer) activity;
+        this.activity.mTitle = "ATM";
     }
 
     private void initViewIds() {
