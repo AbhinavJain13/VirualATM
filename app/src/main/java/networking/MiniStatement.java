@@ -58,14 +58,15 @@ public class MiniStatement {
                     JSONObject jsonObject = response.getJSONObject(0);
                     int responseCode = jsonObject.getInt("code");
                     if (responseCode == 200) {
-                        jsonObject = response.getJSONObject(1);
+                        miniStatementInfo.miniStatement(response);
+/*                        jsonObject = response.getJSONObject(1);
                         //call back to balance information fragment
                         miniStatementInfo.miniStatementInfo(jsonObject.getString(DataHub.TRANSACTION_DATE),
                                 jsonObject.getString(DataHub.CLOSING_BALANCE),
                                 jsonObject.getString(DataHub.ACCOUNT_NO),
                                 jsonObject.getString(DataHub.CREDIT_DEBIT_FLAG),
                                 jsonObject.getString(DataHub.TRANSACTION_AMOUNT),
-                                jsonObject.getString(DataHub.REMARK));
+                                jsonObject.getString(DataHub.REMARK));*/
                     } else if (responseCode == 401) {
                         String msg = jsonObject.getString("message");
                         String description = jsonObject.getString("description");
@@ -100,6 +101,8 @@ public class MiniStatement {
         void unauthorizedUser(int code, String msg, String desc);
 
         void volleyError(String error);
+
+        void miniStatement(JSONArray response) throws JSONException;
     }
 
 }

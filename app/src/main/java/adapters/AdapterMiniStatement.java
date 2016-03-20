@@ -38,7 +38,12 @@ public class AdapterMiniStatement  extends RecyclerView.Adapter<AdapterMiniState
 
     @Override
     public void onBindViewHolder(CustomHolder holder, int position) {
-
+        holder.txtAccnNum.setText(data.get(position).getAccnnum());
+        holder.txtBalance.setText(data.get(position).getBalance());
+        holder.txtDate.setText(data.get(position).getDate());
+        holder.txtFlag.setText(data.get(position).getFlag());
+        holder.txtNotes.setText(data.get(position).getNotes());
+        holder.txtTransactnAmnt.setText(data.get(position).getTransacnamnt());
     }
 
     @Override
@@ -48,7 +53,7 @@ public class AdapterMiniStatement  extends RecyclerView.Adapter<AdapterMiniState
 
     class CustomHolder extends RecyclerView.ViewHolder
     {
-           TextView txtDate, txtTransactnAmnt, txtAccnNum, txtBalance, txtNotes, txtFlag;
+        TextView txtDate, txtTransactnAmnt, txtAccnNum, txtBalance, txtNotes, txtFlag;
 
 
         public CustomHolder(View itemView) {

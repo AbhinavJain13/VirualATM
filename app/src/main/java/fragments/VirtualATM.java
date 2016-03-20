@@ -1,6 +1,7 @@
 package fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ramakant.virualatm.NavigationDrawer;
 import com.example.ramakant.virualatm.R;
@@ -27,6 +29,7 @@ public class VirtualATM extends android.support.v4.app.Fragment {
     private EditText edtPin;
     private Button btnYes;
     private TextView txtResult;
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -59,23 +62,39 @@ public class VirtualATM extends android.support.v4.app.Fragment {
     }
 
     private void withdrawAmount() {
+        showProgressDialog();
         String amount = SharedPreference.getInstance(getActivity()).getFromSharedPreference("AMOUNT", "0");
         String token = SharedPreference.getInstance(getActivity()).getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
         new FundTransferToATM(getActivity(), token, DataHub.USER_ID, amount, DataHub.ACCOUNT_NO_CUST_ID_1, DataHub.ATM_ACCOUNT_NO, new FundTransferToATM.AfterFundTransferToATM() {
             @Override
             public void AfterMoneyTransfer(String destinationAccount, String transectionDate, String referenceNo, String transactionAmount, String payeename, String payeeId, String status) {
+                dismissProgressDialog();
                 txtResult.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void unauthorizedUser(int code, String msg) {
-
+                dismissProgressDialog();
+                Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void volleyError(String error) {
-
+                dismissProgressDialog();
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void dismissProgressDialog() {
+        progressDialog.dismiss();
+    }
+
+    private void showProgressDialog() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+
     }
 }

@@ -2,7 +2,6 @@ package networking;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -49,7 +48,15 @@ public class FundTransferToATM {
                 DataHub.AND_OPERATOR +
                 DataHub.DESTINATION_ACCOUNT + DataHub.EQUAL_OPERATOR + destinationAccountATM +
                 DataHub.AND_OPERATOR +
-                DataHub.AMOUNT + DataHub.EQUAL_OPERATOR + 100;
+                DataHub.AMOUNT + DataHub.EQUAL_OPERATOR + amount +
+                DataHub.AND_OPERATOR +
+                DataHub.PAYEE_DESCRIPTION + DataHub.EQUAL_OPERATOR + "payeedesc" +
+                DataHub.AND_OPERATOR +
+                DataHub.PAYEE_ID + DataHub.EQUAL_OPERATOR + "1" +
+                DataHub.AND_OPERATOR +
+                DataHub.PAYEE_TYPE + DataHub.EQUAL_OPERATOR + "FT" +
+                DataHub.AND_OPERATOR +
+                DataHub.TYPE_OF_TRANSECTION + DataHub.EQUAL_OPERATOR + "DTH";
 
         URL url = null;
         try {
@@ -79,7 +86,7 @@ public class FundTransferToATM {
                     } else if (responseCode == 401) {
                         String msg = jsonObject.getString("message");
                         String description = jsonObject.getString("description");
-                        Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
                         //call back to balance information fragment
                         afterFundTransferToATM.unauthorizedUser(responseCode, msg);
                     }

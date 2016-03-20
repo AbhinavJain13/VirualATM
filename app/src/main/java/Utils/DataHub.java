@@ -52,13 +52,15 @@ public class DataHub {
     public static String PAYEE_ID = "payeeId";
     public static String PAYEE_TYPE = "payeeType";
     public static String PAYMENT_TYPE = "paymentType";
+    public static String TYPE_OF_TRANSECTION = "type_of_transaction";
+
     public static String TRANSACTION_DATE_RESPONSE = "transaction_date";//response
     public static String DESTINATION_ACCOUNT_RESPONSE = "destination_accountno";
-    public static String REFERENCE_RESPONSE = "reference_no";
-    public static String TRANSACTION_AMOUNT_RESPONSE = "transaction_date";//response
-    public static String PAYEE_NAME_RESPONSE = "destination_accountno";
-    public static String PAYEE_ID_RESPONSE = "reference_no";
-    public static String STATUS_RESPONSE = "reference_no";
+    public static String REFERENCE_RESPONSE = "referance_no";
+    public static String TRANSACTION_AMOUNT_RESPONSE = "transaction_amount";//response
+    public static String PAYEE_NAME_RESPONSE = "payee_name";
+    public static String PAYEE_ID_RESPONSE = "payee_id";
+    public static String STATUS_RESPONSE = "status";
 
 
     //test data, account 1
