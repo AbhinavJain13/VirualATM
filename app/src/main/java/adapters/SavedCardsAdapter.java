@@ -36,8 +36,8 @@ public class SavedCardsAdapter extends SavedCardRecyclerViewCursorAdapter<SavedC
         viewHolder.cardNumber.setText(itemData.getCardNumber());
         viewHolder.toMonth.setText(itemData.getToMonth());
         viewHolder.toYear.setText(itemData.getToYear());
-        viewHolder.fromMonth.setText(itemData.getFromMonth());
-        viewHolder.fromYear.setText(itemData.getFromYear());
+       /* viewHolder.fromMonth.setText(itemData.getFromMonth());
+        viewHolder.fromYear.setText(itemData.getFromYear());*/
         viewHolder.cvv.setText(itemData.getCvv());
         viewHolder.name.setText(itemData.getName());
         viewHolder.updateCurrentId(itemData.getId());
@@ -62,7 +62,7 @@ public class SavedCardsAdapter extends SavedCardRecyclerViewCursorAdapter<SavedC
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
 
-        TextView cardNumber, toMonth, toYear, fromMonth, fromYear, cvv, name, edit;
+        TextView cardNumber, toMonth, toYear,/* fromMonth, fromYear,*/ cvv, name, edit;
         Integer currentRowId;
 
        void updateCurrentId(Integer currentRowId)
@@ -73,8 +73,8 @@ public class SavedCardsAdapter extends SavedCardRecyclerViewCursorAdapter<SavedC
         public MyViewHolder(View itemView) {
             super(itemView);
             cardNumber = (TextView) itemView.findViewById(R.id.edtCardNumber);
-            fromMonth = (TextView) itemView.findViewById(R.id.fromMonth);
-            fromYear = (TextView) itemView.findViewById(R.id.fromYear);
+            /*fromMonth = (TextView) itemView.findViewById(R.id.fromMonth);
+            fromYear = (TextView) itemView.findViewById(R.id.fromYear);*/
             toMonth = (TextView) itemView.findViewById(R.id.toMonth);
             toYear = (TextView) itemView.findViewById(R.id.toYear);
             cvv = (TextView) itemView.findViewById(R.id.cvv);

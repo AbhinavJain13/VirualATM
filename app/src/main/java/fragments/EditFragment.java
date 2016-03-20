@@ -23,10 +23,10 @@ import database.DatabaseOpenHelper;
  */
 public class EditFragment extends Fragment {
 
-    EditText edtCardNumber, fromMonth, fromYear, toMonth, toYear, cvv, name;
+    EditText edtCardNumber, /*fromMonth, fromYear,*/ toMonth, toYear, cvv, name;
     Integer rowId;
 
-    Button btnSaveCard, btnGeneratePin;
+    Button btnSaveCard, btnGeneratePin, btnOpenCard;
     NavigationDrawer activity;
     @Nullable
     @Override
@@ -55,27 +55,29 @@ public class EditFragment extends Fragment {
         btnGeneratePin  = (Button) rooView.findViewById(R.id    .btnGeneratePin);
         btnGeneratePin.setVisibility(View.GONE);
         edtCardNumber = (EditText) rooView.findViewById(R.id.edtCardNumber);
-        fromMonth = (EditText) rooView.findViewById(R.id.fromMonth);
-        fromYear = (EditText) rooView.findViewById(R.id.fromYear);
+        /*fromMonth = (EditText) rooView.findViewById(R.id.fromMonth);
+        fromYear = (EditText) rooView.findViewById(R.id.fromYear);*/
         toMonth = (EditText) rooView.findViewById(R.id.toMonth);
         toYear = (EditText) rooView.findViewById(R.id.toYear);
         cvv = (EditText) rooView.findViewById(R.id.cvv);
         name = (EditText) rooView.findViewById(R.id.name);
+        btnOpenCard = (Button) rooView.findViewById(R.id.btnOpenCard);
+        btnOpenCard.setVisibility(View.GONE);
 
        CardItemData itemData =  DatabaseOpenHelper.getInstance(getActivity()).getDataFromRowid(rowId);
 
         edtCardNumber.setText(itemData.getCardNumber());
         toMonth.setText(itemData.getToMonth());
         toYear.setText(itemData.getToYear());
-        fromMonth.setText(itemData.getFromMonth());
-        fromYear.setText(itemData.getFromYear());
+      /*  fromMonth.setText(itemData.getFromMonth());
+        fromYear.setText(itemData.getFromYear());*/
         cvv.setText(itemData.getCvv());
         name.setText(itemData.getName());
 
         btnSaveCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseOpenHelper.getInstance(getActivity()).updateCardData(rowId,edtCardNumber.getText().toString(), fromMonth.getText().toString(), fromYear.getText().toString()
+                DatabaseOpenHelper.getInstance(getActivity()).updateCardData(rowId,edtCardNumber.getText().toString(), "jhkjk", "hjk"
                         , toMonth.getText().toString(), toYear.getText().toString(), cvv.getText().toString(), name.getText().toString());
 
                 SavedCardsFragment savedCardsFragment = new SavedCardsFragment();

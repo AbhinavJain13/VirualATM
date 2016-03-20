@@ -61,6 +61,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Transaction Amount"
+                        android:textColor="#FFFFFF"
+
                         />
                     <TextView
                         android:id="@+id/txtTransacAmnt"
@@ -68,6 +70,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:text=""
+                        android:textColor="#FFFFFF"
+
                         />
 
                 </LinearLayout>
@@ -88,6 +92,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Account Number"
+                android:textColor="#FFFFFF"
+
                 />
             <TextView
                 android:id="@+id/txtAccnNum"
@@ -96,6 +102,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:text=""
+                android:textColor="#FFFFFF"
+
                 />
             <View
                 android:layout_width="wrap_content"
@@ -110,6 +118,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Balance"
+                android:textColor="#FFFFFF"
+
                 />
             <TextView
                 android:id="@+id/txtBalance"
@@ -118,6 +128,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:text=""
+                android:textColor="#FFFFFF"
+
                 />
             <View
                 android:layout_width="wrap_content"
@@ -131,6 +143,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Notes"
+                android:textColor="#FFFFFF"
+
                 />
             <TextView
                 android:id="@+id/txtNotes"
@@ -139,6 +153,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:text=""
+                android:textColor="#FFFFFF"
+
                 />
             <View
                 android:layout_width="wrap_content"
@@ -153,6 +169,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Flag"
+                android:textColor="#FFFFFF"
+
                 />
             <TextView
                 android:id="@+id/txtFlag"
@@ -162,6 +180,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:text=""
+                android:textColor="#FFFFFF"
+
                 />
 
         </LinearLayout>

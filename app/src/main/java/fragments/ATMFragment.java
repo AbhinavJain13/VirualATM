@@ -34,7 +34,7 @@ public class ATMFragment extends Fragment {
     NavigationDrawer mParentActivity;
     Button btnGeneratePin, btnSaveCard, btnOpenCard;
     TextView txtPinGenerated;
-    EditText edtCardNumber, fromMonth, fromYear, toMonth, toYear, cvv, name, amount;
+    EditText edtCardNumber, toMonth, toYear, cvv, name, amount;
     Integer rowId = 0;
     CardItemData data;
 
@@ -63,8 +63,8 @@ public class ATMFragment extends Fragment {
         edtCardNumber.setText(itemData.getCardNumber());
         toMonth.setText(itemData.getToMonth());
         toYear.setText(itemData.getToYear());
-        fromMonth.setText(itemData.getFromMonth());
-        fromYear.setText(itemData.getFromYear());
+        /*fromMonth.setText(itemData.getFromMonth());
+        fromYear.setText(itemData.getFromYear());*/
         cvv.setText(itemData.getCvv());
         name.setText(itemData.getName());
     }
@@ -76,8 +76,8 @@ public class ATMFragment extends Fragment {
         btnOpenCard = (Button) rooView.findViewById(R.id.btnOpenCard);
         btnSaveCard = (Button) rooView.findViewById(R.id.btnSaveCard);
         edtCardNumber = (EditText) rooView.findViewById(R.id.edtCardNumber);
-        fromMonth = (EditText) rooView.findViewById(R.id.fromMonth);
-        fromYear = (EditText) rooView.findViewById(R.id.fromYear);
+        /*fromMonth = (EditText) rooView.findViewById(R.id.fromMonth);
+        fromYear = (EditText) rooView.findViewById(R.id.fromYear);*/
         toMonth = (EditText) rooView.findViewById(R.id.toMonth);
         toYear = (EditText) rooView.findViewById(R.id.toYear);
         cvv = (EditText) rooView.findViewById(R.id.cvv);
@@ -103,7 +103,7 @@ public class ATMFragment extends Fragment {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        DatabaseOpenHelper.getInstance(getActivity()).insertCardData(edtCardNumber.getText().toString(), fromMonth.getText().toString(), fromYear.getText().toString()
+                        DatabaseOpenHelper.getInstance(getActivity()).insertCardData(edtCardNumber.getText().toString(),"jhadf", "jhkj"
                                 , toMonth.getText().toString(), toYear.getText().toString(), cvv.getText().toString(), name.getText().toString());
                     }
                 });

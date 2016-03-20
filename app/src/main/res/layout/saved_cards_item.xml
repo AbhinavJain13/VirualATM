@@ -55,7 +55,7 @@
                 android:layout_marginTop="20dp"
                 >
 
-                <TextView
+                <!--<TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
@@ -68,13 +68,12 @@
                     android:background="@drawable/edit_text_shape"
                     android:padding="3dp"
                     android:id="@+id/fromYear"
-                    />
+                    />-->
 
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_shape"
-                    android:layout_marginLeft="15dp"
                     android:padding="3dp"
                     android:id="@+id/toMonth"
                     />

@@ -79,8 +79,15 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
 
                 break;
-
             case 1:
+                VirtualATM virtualATM = new VirtualATM();
+                FragmentManager fragmentManager8 = getSupportFragmentManager();
+                fragmentManager8.beginTransaction()
+                        .replace(R.id.container, virtualATM)
+                        .commit();
+                break;
+
+            case 2:
                 Mini_Statement_Fragment fragmentMiniStat = new Mini_Statement_Fragment();
                 FragmentManager fragmentManager6 = getSupportFragmentManager();
                 fragmentManager6.beginTransaction()
@@ -89,7 +96,7 @@ public class NavigationDrawer extends AppCompatActivity
 
                 break;
 
-            case 2:
+            case 3:
                SavedCardsFragment fragmentSavedCards = new SavedCardsFragment();
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("isTick", false);
@@ -100,7 +107,7 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
                 break;
 
-            case 3:
+            case 4:
                 AccountSummaryFragment fragmentAccountSummary = new AccountSummaryFragment();
                 FragmentManager fragmentManager2 = getSupportFragmentManager();
                 fragmentManager2.beginTransaction()
@@ -108,7 +115,7 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
                 break;
 
-            case 4:
+            case 5:
                 BalanceInfo balanceInfoFragment = new BalanceInfo();
                 FragmentManager fragmentManager4 = getSupportFragmentManager();
                 fragmentManager4.beginTransaction()
@@ -116,7 +123,7 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
                 break;
 
-            case 5:
+            case 6:
                 NeedHelpFragment needHelpFragment = new NeedHelpFragment();
                 FragmentManager fragmentManager3 = getSupportFragmentManager();
                 fragmentManager3.beginTransaction()
@@ -124,7 +131,7 @@ public class NavigationDrawer extends AppCompatActivity
                         .commit();
 
                 break;
-            case 6:
+            case 7:
                 Intent i=new Intent(android.content.Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(android.content.Intent.EXTRA_SUBJECT,"Virtual ATM");
@@ -132,7 +139,7 @@ public class NavigationDrawer extends AppCompatActivity
                 startActivity(Intent.createChooser(i,"Share via"));
                 break;
 
-            case 7:
+            case 8:
                 new AlertDialog.Builder(this)
                         //.setTitle("Delete entry")
                         .setMessage("Do you really want to Log Out from Virtual ATM ?")
@@ -153,13 +160,7 @@ public class NavigationDrawer extends AppCompatActivity
                         .show();
                 break;
 
-            case 8:
-                VirtualATM virtualATM = new VirtualATM();
-                FragmentManager fragmentManager8 = getSupportFragmentManager();
-                fragmentManager8.beginTransaction()
-                        .replace(R.id.container, virtualATM)
-                        .commit();
-                break;
+
 
         }
     }
