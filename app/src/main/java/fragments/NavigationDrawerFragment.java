@@ -103,7 +103,7 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
-                        getString(R.string.title_atm),
+                        getString(R.string.generate_pin),
                         getString(R.string.title_mini_statement),
                         getString(R.string.title_saved_cards),
                         getString(R.string.title_account_summary),
@@ -111,6 +111,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_need_help),
                         getString(R.string.title_refer_to_friend),
                         getString(R.string.title_logout),
+                        getString(R.string.title_atm)
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;

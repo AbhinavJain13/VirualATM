@@ -11,6 +11,7 @@
     <string name="title_section3">Section 3</string>
 
     <string name="title_atm">ATM</string>
+    <string name="generate_pin">GENERATE PIN</string>
     <string name="title_mini_statement">MINI STATEMENT</string>
     <string name="title_saved_cards">SAVED CARDS</string>
     <string name="title_account_summary">ACCOUNT SUMMARY</string>

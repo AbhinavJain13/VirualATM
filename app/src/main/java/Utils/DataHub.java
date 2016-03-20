@@ -43,6 +43,24 @@ public class DataHub {
     public static String REMARK = "remark";
     public static String MINI_STATEMENT_URL = "http://retailbanking.mybluemix.net/banking/icicibank/recenttransaction";
 
+    //fund transfer
+    public static String FUND_TRANSFER_URL = "http://retailbanking.mybluemix.net/banking/icicibank/fundTransfer";
+    public static String SOURCE_ACCOUNT = "srcAccount";
+    public static String DESTINATION_ACCOUNT = "destAccount";
+    public static String AMOUNT = "amt";
+    public static String PAYEE_DESCRIPTION = "payeeDesc";
+    public static String PAYEE_ID = "payeeId";
+    public static String PAYEE_TYPE = "payeeType";
+    public static String PAYMENT_TYPE = "paymentType";
+    public static String TRANSACTION_DATE_RESPONSE = "transaction_date";//response
+    public static String DESTINATION_ACCOUNT_RESPONSE = "destination_accountno";
+    public static String REFERENCE_RESPONSE = "reference_no";
+    public static String TRANSACTION_AMOUNT_RESPONSE = "transaction_date";//response
+    public static String PAYEE_NAME_RESPONSE = "destination_accountno";
+    public static String PAYEE_ID_RESPONSE = "reference_no";
+    public static String STATUS_RESPONSE = "reference_no";
+
+
     //test data, account 1
     public static String CARD_ACCOUNT_NO_1 = "4111133444441528";
     public static String LOAN_ACCOUNT_NO_1 = "LBMUM11112221528";
@@ -61,14 +79,14 @@ public class DataHub {
     public static String TREASURY_USER_ID_2 = "A2";
     public static String TREASURY_CUST_ID_2 = "88882529";
 
-    //test data, account 3
-    public static String CARD_ACCOUNT_NO_3 = "4111133444441530";
-    public static String LOAN_ACCOUNT_NO_3 = "LBMUM11112221530";
-    public static String CUST_ID_3 = "88882530";
-    public static String ACCOUNT_NO_CUST_ID_3 = "5555666677771530";
-    public static String TREASURY_CURRENCY_PAIR_3 = "AUD/INR,SGD/INR,AUD/INR,SGD/INR,AUD/INR,SGD/INR,USD/INR,GBP/INR,EUR/INR,USD/INR,GBP/INR,EUR/INR,USD/INR,GBP/INR,EUR/INR,CAD/INR,AUD/INR,USD/INR,EUR/INR,GBP/INR,CAD/INR,AUD/INR,USD/INR,EUR/INR,GBP/INR,CAD/INR,AUD/INR,USD/INR,EUR/INR,GBP/INR\"";
-    public static String TREASURY_USER_ID_3 = "A3";
-    public static String TREASURY_CUST_ID_3 = "88882530";
+    //test data, account 3  //MY ATM ACCOUNT (this Account will be used as an ATM For Now)
+    public static String ATM_CARD_ACCOUNT_NO = "4111133444441530";
+    public static String ATM_LOAN_ACCOUNT_NO = "LBMUM11112221530";
+    public static String ATM_CUST_ID = "88882530";
+    public static String ATM_ACCOUNT_NO = "5555666677771530";
+    public static String ATM_TREASURY_CURRENCY_PAIR = "AUD/INR,SGD/INR,AUD/INR,SGD/INR,AUD/INR,SGD/INR,USD/INR,GBP/INR,EUR/INR,USD/INR,GBP/INR,EUR/INR,USD/INR,GBP/INR,EUR/INR,CAD/INR,AUD/INR,USD/INR,EUR/INR,GBP/INR,CAD/INR,AUD/INR,USD/INR,EUR/INR,GBP/INR,CAD/INR,AUD/INR,USD/INR,EUR/INR,GBP/INR\"";
+    public static String ATM_TREASURY_USER_ID = "A3";
+    public static String ATM_TREASURY_CUST_ID = "88882530";
 
     //test data, corporate account
     public static String CORP_ID = "13131981";

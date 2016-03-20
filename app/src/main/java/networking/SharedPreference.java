@@ -3,8 +3,6 @@ package networking;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import Utils.DataHub;
-
 /**
  * Created by Ramakant on 3/12/2016.
  */
@@ -30,8 +28,8 @@ public class SharedPreference {
         editor.commit();
     }
 
-    public String getFromSharedPreference(String key) {
-        return sharedPref.getString(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
+    public String getFromSharedPreference(String key, String defaultValue) {
+        return sharedPref.getString(key, defaultValue);//"invalid_value"
     }
 
     private SharedPreferences.Editor getEditor() {

@@ -6,116 +6,120 @@
     <android.support.v7.widget.CardView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="30dp"
         >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
             android:background="#6CA6CD"
+            android:orientation="vertical"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="Account Number"
                 android:layout_marginLeft="5dp"
+                android:text="Account Number"
+                android:textSize="18dp"
                 android:textColor="#FFFFFF"
                 />
 
             <TextView
+                android:id="@+id/txtAccountNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="557478329"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="3dp"
+                android:text="557478329"
+                android:textSize="15dp"
                 />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Balance"
                 android:textColor="#FFFFFF"
-                android:layout_marginLeft="5dp"
+                android:textSize="18dp"
                 />
 
             <TextView
+                android:id="@+id/txtBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="560000 Rs."
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="3dp"
+                android:text="560000 Rs."
+                android:textSize="15dp"
                 />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Account Type"
                 android:textColor="#FFFFFF"
-                android:layout_marginLeft="5dp"
+                android:textSize="18dp"
                 />
 
             <TextView
+                android:id="@+id/txtAccountType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Savings"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="3dp"
+                android:text="Savings"
+                android:textSize="15dp"
                 />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#9C9C9C"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#9C9C9C"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="5dp"
                 android:text="Balance Time"
                 android:textColor="#FFFFFF"
-                android:layout_marginLeft="5dp"
+                android:textSize="18dp"
                 />
 
             <TextView
+                android:id="@+id/txtBalanceTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01-02-16 14:43:259 IST"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:textSize="15dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="3dp"
-                android:layout_marginBottom="5dp"
+                android:text="01-02-16 14:43:259 IST"
+                android:textSize="15dp"
                 />
 
 

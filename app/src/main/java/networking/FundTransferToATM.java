@@ -19,31 +19,37 @@ import java.net.URL;
 import Utils.DataHub;
 
 /**
- * Created by Ramakant on 3/13/2016.
- * implement interface of these classes in you code
+ * Created by Ramakant on 3/19/2016.
  */
-public class BalanceEnquiry {
-    public static String TAG = BalanceEnquiry.class.getSimpleName();
-    private BalanceOfYourAccount balanceOfYourAccount;
+public class FundTransferToATM {
+    public static String TAG = FundTransferToATM.class.getSimpleName();
     private Context mContext;
     private String token;
     private String clientId;
-    private String accountNumber;
+    private String sourceAccount;
+    private String DestinationAccountATM;
 
-    public BalanceEnquiry(Context context, String token, String clientId, String accountNumber, final BalanceOfYourAccount balanceOfYourAccount) {
+    private AfterFundTransferToATM afterFundTransferToATM;
+
+    public FundTransferToATM(Context context, String token, String clientId, String amount, String sourceAccount, String destinationAccountATM, final AfterFundTransferToATM afterFundTransferToATM) {
         this.mContext = context;
         this.token = token;
         this.clientId = clientId;
-        this.accountNumber = accountNumber;
-        this.balanceOfYourAccount = balanceOfYourAccount;
+        this.sourceAccount = sourceAccount;
+        this.DestinationAccountATM = destinationAccountATM;
+        this.afterFundTransferToATM = afterFundTransferToATM;
 
-        String finalUrl = DataHub.BALANCE_ENQUIRY_URL +
+        String finalUrl = DataHub.FUND_TRANSFER_URL +
                 DataHub.QUESTION_MARK_OPERATOR +
                 DataHub.CLIENT_ID + DataHub.EQUAL_OPERATOR + clientId +
                 DataHub.AND_OPERATOR +
                 DataHub.AUTHENTICATION_TOKEN + DataHub.EQUAL_OPERATOR + token +
                 DataHub.AND_OPERATOR +
-                DataHub.ACCOUNT_NO + DataHub.EQUAL_OPERATOR + accountNumber;
+                DataHub.SOURCE_ACCOUNT + DataHub.EQUAL_OPERATOR + sourceAccount +
+                DataHub.AND_OPERATOR +
+                DataHub.DESTINATION_ACCOUNT + DataHub.EQUAL_OPERATOR + destinationAccountATM +
+                DataHub.AND_OPERATOR +
+                DataHub.AMOUNT + DataHub.EQUAL_OPERATOR + 100;
 
         URL url = null;
         try {
@@ -60,18 +66,22 @@ public class BalanceEnquiry {
                     int responseCode = jsonObject.getInt("code");
                     if (responseCode == 200) {
                         jsonObject = response.getJSONObject(1);
-                        String balance = jsonObject.getString(DataHub.BALANCE);
-                        String accountNumber = jsonObject.getString(DataHub.ACCOUNT_NO);
-                        String accountType = jsonObject.getString(DataHub.ACCOUNT_TYPE);
-                        String balanceTime = jsonObject.getString(DataHub.BALANCE_TIME);
+                        String account = jsonObject.getString(DataHub.DESTINATION_ACCOUNT_RESPONSE);
+                        String date = jsonObject.getString(DataHub.TRANSACTION_DATE_RESPONSE);
+                        String reference = jsonObject.getString(DataHub.REFERENCE_RESPONSE);
+                        String amount = jsonObject.getString(DataHub.TRANSACTION_AMOUNT_RESPONSE);
+                        String payeeName = jsonObject.getString(DataHub.PAYEE_NAME_RESPONSE);
+                        String payeeId = jsonObject.getString(DataHub.PAYEE_ID_RESPONSE);
+                        String status = jsonObject.getString(DataHub.STATUS_RESPONSE);
+
                         //call back to balance information fragment
-                        balanceOfYourAccount.balanceInfo(balance, accountNumber, accountType, balanceTime);
+                        afterFundTransferToATM.AfterMoneyTransfer(account, date, reference, amount, payeeName, payeeId, status);
                     } else if (responseCode == 401) {
                         String msg = jsonObject.getString("message");
                         String description = jsonObject.getString("description");
                         Toast.makeText(mContext, msg + ": " + description, Toast.LENGTH_LONG).show();
                         //call back to balance information fragment
-                        balanceOfYourAccount.unauthorizedUser(responseCode, msg);
+                        afterFundTransferToATM.unauthorizedUser(responseCode, msg);
                     }
 
                 } catch (JSONException e) {
@@ -82,15 +92,15 @@ public class BalanceEnquiry {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, error.toString());
-                balanceOfYourAccount.volleyError(error.toString());
+                afterFundTransferToATM.volleyError(error.toString());
             }
         });
 
         VolleyApplication.getInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    public interface BalanceOfYourAccount {
-        void balanceInfo(String balance, String accountNumber, String accountType, String balanceTime);
+    public interface AfterFundTransferToATM {
+        void AfterMoneyTransfer(String destinationAccount, String transectionDate, String referenceNo, String transactionAmount, String payeename, String payeeId, String status);
 
         void unauthorizedUser(int code, String msg);
 

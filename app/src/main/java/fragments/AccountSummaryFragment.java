@@ -65,7 +65,7 @@ public class AccountSummaryFragment extends Fragment {
 
     private void accountSummary() {
         showProgressDialog();
-        String token = SharedPreference.getInstance(getActivity()).getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN);
+        String token = SharedPreference.getInstance(getActivity()).getFromSharedPreference(DataHub.AUTHENTICATION_TOKEN, "invalid_value");
         new BankAccountSummary(getActivity(), token, DataHub.USER_ID, DataHub.ACCOUNT_NO_CUST_ID_1, DataHub.CUST_ID_1, new BankAccountSummary.BankAccountDetails() {
             @Override
             public void accountDetails(String balance, String accountNumber, String accountType, String product_desc, String productType, String subProductType, String custId, String accountStatus, String mobileNo, String productCategory) {
@@ -89,6 +89,7 @@ public class AccountSummaryFragment extends Fragment {
             @Override
             public void volleyError(String error) {
                 dismissProgressDialog();
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
